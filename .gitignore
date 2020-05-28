@@ -14,6 +14,12 @@ local.properties
 # External tool builders
 .externalToolBuilders/
 
+#setting
+.settings
+
+#ideia
+.ideia
+
 # Locally stored "Eclipse launch configurations"
 *.launch
 
@@ -183,7 +189,6 @@ buildNumber.properties
 *testsdir
 *testsfile
 *testsfiles
-*test
 *testdir
 *testfile
 *testfiles
