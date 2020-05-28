@@ -40,4 +40,18 @@ public class PersistenceService {
 	public void salvarFilme(Filme filme) {
 		queryService.salvarFilme(filme);
 	}
+	
+	/**
+	 * @param id
+	 */
+	public void deletarFilme(Long id) {
+		queryService.deletarFilme(id);
+	}
+	
+	/**
+	 * @param filme
+	 */
+	public void atualizarFilme(Filme filme) {
+		queryService.atualizarFilme(filme);
+	}
 }

@@ -1,6 +1,8 @@
 package com.github.ammirante.servico;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -40,6 +42,9 @@ public class FilmeServicoTest {
     @Inject
     private Idioma idioma;
 
+    /**
+     * @return
+     */
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
@@ -49,6 +54,9 @@ public class FilmeServicoTest {
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }
 
+    /**
+     * @throws Exception
+     */
     @Before
     public void setUp() throws Exception {
     	filme.setAdulto(Boolean.TRUE);
@@ -66,6 +74,9 @@ public class FilmeServicoTest {
     	filme.setGeneros(Arrays.asList(genero));
     }
     
+    /**
+     * 
+     */
     @Test
     public void salvarFilme() {
     	persistenceService.salvarFilme(filme);
@@ -80,5 +91,29 @@ public class FilmeServicoTest {
     	assertNotNull(filme.getDataLancamento());
     	assertNotNull(filme.getTempoDuracao());
     }
+    
+//    /**
+//     * 
+//     */
+//    @Test
+//    public void recuperarFilmes() {
+//    	assertEquals(0, persistenceService.recuperarFilmes().size());
+//    	persistenceService.salvarFilme(filme);
+//    	assertEquals(1, persistenceService.recuperarFilmes().size());
+//    }
+//    
+//    /**
+//     * 
+//     */
+//    @Test
+//    public void atualizarFilme() {
+//    	// Salvando o primeiro filme.
+//    	persistenceService.salvarFilme(filme);
+//    	
+//    	filme.setDescricao("Alterando a descrição");
+//    	persistenceService.atualizarFilme(filme);
+//    	
+//    	assertEquals(filme.getDescricao(), persistenceService.recuperarFilme(1L).getDescricao());
+//    }
 }
 

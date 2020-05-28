@@ -4,5 +4,4 @@ com\github\ammirante\entidade\Genero.class
 com\github\ammirante\configuracao\JAXRSConfig.class
 com\github\ammirante\entidade\Filme.class
 com\github\ammirante\servico\PersistenceService.class
-com\github\ammirante\util\Retorno.class
 com\github\ammirante\servico\QueryService.class

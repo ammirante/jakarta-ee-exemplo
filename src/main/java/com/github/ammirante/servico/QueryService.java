@@ -35,14 +35,23 @@ public class QueryService {
     }
     
     /**
+     * @param id
+     */
+    public void deletarFilme(Long id) {
+    	StringBuilder sql = new StringBuilder();
+    	sql.append("DELETE FROM FILME F WHERE F.ID = ?");
+    	
+    	Query query = em.createNativeQuery(sql.toString());
+    	query.setParameter(1, id);
+    	
+    	query.executeUpdate();
+    }
+    
+    /**
      * @param filme
      */
     public void salvarFilme(Filme filme) {
-    	if(filme.getId() != null) {
-    		em.merge(filme);
-    	} else {
-    		em.persist(filme);
-    	}
+		em.persist(filme);
     }
     
     /**
@@ -61,5 +70,12 @@ public class QueryService {
     	} catch (NonUniqueResultException | NoResultException e) {
     		return null;
 		}
+    }
+    
+    /**
+     * @param filme
+     */
+    public void atualizarFilme(Filme filme) {
+		em.merge(filme);
     }
 }

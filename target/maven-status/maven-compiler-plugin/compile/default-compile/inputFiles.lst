@@ -1,8 +1,7 @@
-C:\git\jakarta-ee-prova-ais-digital\src\main\java\com\github\ammirante\entidade\Genero.java
-C:\git\jakarta-ee-prova-ais-digital\src\main\java\com\github\ammirante\entidade\Idioma.java
-C:\git\jakarta-ee-prova-ais-digital\src\main\java\com\github\ammirante\util\Retorno.java
-C:\git\jakarta-ee-prova-ais-digital\src\main\java\com\github\ammirante\rest\Filmes.java
-C:\git\jakarta-ee-prova-ais-digital\src\main\java\com\github\ammirante\servico\PersistenceService.java
-C:\git\jakarta-ee-prova-ais-digital\src\main\java\com\github\ammirante\entidade\Filme.java
-C:\git\jakarta-ee-prova-ais-digital\src\main\java\com\github\ammirante\configuracao\JAXRSConfig.java
-C:\git\jakarta-ee-prova-ais-digital\src\main\java\com\github\ammirante\servico\QueryService.java
+C:\git\jakarta-ee-exemplo\src\main\java\com\github\ammirante\entidade\Filme.java
+C:\git\jakarta-ee-exemplo\src\main\java\com\github\ammirante\servico\PersistenceService.java
+C:\git\jakarta-ee-exemplo\src\main\java\com\github\ammirante\entidade\Genero.java
+C:\git\jakarta-ee-exemplo\src\main\java\com\github\ammirante\configuracao\JAXRSConfig.java
+C:\git\jakarta-ee-exemplo\src\main\java\com\github\ammirante\entidade\Idioma.java
+C:\git\jakarta-ee-exemplo\src\main\java\com\github\ammirante\rest\Filmes.java
+C:\git\jakarta-ee-exemplo\src\main\java\com\github\ammirante\servico\QueryService.java
