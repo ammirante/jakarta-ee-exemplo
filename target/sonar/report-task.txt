@@ -1,0 +1,6 @@
+projectKey=jakarta-ee
+serverUrl=http://localhost:9000
+serverVersion=8.3.1.34397
+dashboardUrl=http://localhost:9000/dashboard?id=jakarta-ee
+ceTaskId=AXJYtx6PxASNkfmDvpU8
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AXJYtx6PxASNkfmDvpU8

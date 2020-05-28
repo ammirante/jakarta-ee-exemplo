@@ -25,7 +25,7 @@ public class Idioma {
 	protected Long id;
 
 	@Column(nullable = false, length = 20, unique = true, updatable = true)
-	private String idioma;
+	private String lingua;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "filme_id")
@@ -49,14 +49,14 @@ public class Idioma {
 	 * @return the idioma
 	 */
 	public String getIdioma() {
-		return idioma;
+		return lingua;
 	}
 
 	/**
 	 * @param idioma the idioma to set
 	 */
 	public void setIdioma(String idioma) {
-		this.idioma = idioma;
+		this.lingua = idioma;
 	}
 
 	/**
@@ -78,6 +78,6 @@ public class Idioma {
 	 */
 	@Override
 	public String toString() {
-		return "Idioma [id=" + id + ", idioma=" + idioma + ", filme=" + filme + "]";
+		return "Idioma [id=" + id + ", idioma=" + lingua + ", filme=" + filme + "]";
 	}
 }
