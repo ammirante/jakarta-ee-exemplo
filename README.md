@@ -22,5 +22,5 @@ Para iniciar a aplicação, basta executar o comando: ***mvn clean package payar
 Observação importante: como optei por utilizar o banco de dados sqlite3 e não subi o mesmo em um docker, é preciso realizar um ajuste na classe: *PersistenceService* alterando a URL do *datasource* adicionando o arquivo todo.db de acordo com o local que você baixou.
 ## Sonar
 Para executar o sonar, é preciso ter instalado em sua máquina o docker e executar os seguintes comandos:
--- Para inicar o sonar: docker-compose -f sonarqube.yml
--- Para parar o sonar: docker-compose -f sonarqube.yml down
+- Para inicar o sonar: docker-compose -f sonarqube.yml
+- Para parar o sonar: docker-compose -f sonarqube.yml down
