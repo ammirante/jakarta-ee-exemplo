@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArquillianContainersManager">
+    <container containerId="container.arquillian.manual" name="Manual container configuration">
+      <maven-library groupId="fish.payara.extras" artifactId="payara-embedded-all" version="5.182" />
+    </container>
+  </component>
+</project>
