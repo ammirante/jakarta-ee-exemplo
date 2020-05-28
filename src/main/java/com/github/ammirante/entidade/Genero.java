@@ -6,7 +6,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -15,20 +14,19 @@ import javax.persistence.Table;
  * Genero
  *
  */
-@Entity
+@Entity(name = "Genero")
 @Table(name = "genero")
 public class Genero {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="genero_sequence")
 	@SequenceGenerator(name="genero_sequence", sequenceName = "genero_sequence")
-	protected Long id;
+	private Long id;
 
-	@Column(nullable = false, length = 20, unique = true, updatable = true)
+	@Column(nullable = false, length = 20, updatable = true)
 	private String nome;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "filme_id")
 	private Filme filme;
 
 	/**

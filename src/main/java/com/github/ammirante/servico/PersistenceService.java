@@ -3,7 +3,10 @@ package com.github.ammirante.servico;
 import java.util.List;
 
 import javax.annotation.sql.DataSourceDefinition;
+import javax.ejb.Local;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
 
 import com.github.ammirante.entidade.Filme;
@@ -13,6 +16,7 @@ import com.github.ammirante.entidade.Filme;
  *
  */
 @DataSourceDefinition(name = "java:app/Todo/MyDS", className = "org.sqlite.SQLiteDataSource", url = "jdbc:sqlite:C:/Downloads/sqlite-tools-win32-x86-3320100/todo.db")
+@Local
 @Stateless
 public class PersistenceService {
 
@@ -22,6 +26,7 @@ public class PersistenceService {
 	/**
 	 * @return
 	 */
+	@TransactionAttribute(TransactionAttributeType.NEVER)
 	public List<Filme> recuperarFilmes() {
 		return queryService.recuperarFilmes();
 	}
@@ -30,6 +35,7 @@ public class PersistenceService {
 	 * @param id
 	 * @return
 	 */
+	@TransactionAttribute(TransactionAttributeType.NEVER)
 	public Filme recuperarFilme(Long id) {
 		return queryService.recuperarFilme(id);
 	}
@@ -37,6 +43,7 @@ public class PersistenceService {
 	/**
 	 * @param filme
 	 */
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void salvarFilme(Filme filme) {
 		queryService.salvarFilme(filme);
 	}
@@ -44,6 +51,7 @@ public class PersistenceService {
 	/**
 	 * @param id
 	 */
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void deletarFilme(Long id) {
 		queryService.deletarFilme(id);
 	}
@@ -51,6 +59,7 @@ public class PersistenceService {
 	/**
 	 * @param filme
 	 */
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void atualizarFilme(Filme filme) {
 		queryService.atualizarFilme(filme);
 	}

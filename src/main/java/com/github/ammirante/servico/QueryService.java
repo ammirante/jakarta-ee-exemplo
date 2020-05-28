@@ -8,6 +8,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.NonUniqueResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import com.github.ammirante.entidade.Filme;
 
@@ -24,12 +25,11 @@ public class QueryService {
     /**
      * @return
      */
-    @SuppressWarnings("unchecked")
 	public List<Filme> recuperarFilmes() {
     	StringBuilder sql = new StringBuilder();
-    	sql.append("SELECT * FROM FILME");
+    	sql.append("SELECT F FROM Filme F ORDER BY F.titulo");
     	
-    	Query query = em.createNativeQuery(sql.toString());
+    	TypedQuery<Filme> query = em.createQuery(sql.toString(), Filme.class);
     	
     	return query.getResultList();
     }
@@ -39,12 +39,11 @@ public class QueryService {
      */
     public void deletarFilme(Long id) {
     	StringBuilder sql = new StringBuilder();
-    	sql.append("DELETE FROM FILME F WHERE F.ID = ?");
+    	sql.append("DELETE FROM Filme WHERE id = :id");
     	
-    	Query query = em.createNativeQuery(sql.toString());
-    	query.setParameter(1, id);
-    	
-    	query.executeUpdate();
+    	em.createQuery(sql.toString())
+    	.setParameter("id", id)
+    	.executeUpdate();
     }
     
     /**
@@ -60,10 +59,10 @@ public class QueryService {
      */
     public Filme recuperarFilme(Long id) {
     	StringBuilder sql = new StringBuilder();
-    	sql.append("SELECT * FROM FILME F WHERE F.ID = ?");
+    	sql.append("SELECT F FROM Filme F WHERE F.id = :id");
     	
-    	Query query = em.createNativeQuery(sql.toString());
-    	query.setParameter(1, id);
+    	Query query = em.createQuery(sql.toString(), Filme.class);
+    	query.setParameter("id", id);
     	
     	try {
     		return (Filme) query.getSingleResult();

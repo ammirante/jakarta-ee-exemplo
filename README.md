@@ -10,14 +10,14 @@
  - GET	/jakarta-ee/api/v1/filmes;
  - GET	/jakarta-ee/api/v1/filmes/{id}
  - POST	/jakarta-ee/api/v1/filmes;
- - DELETE	/jakarta-ee/api/v1/filmes/{id}.
-
+ - DELETE	/jakarta-ee/api/v1/filmes/{id};
+ - PUT	/jakarta-ee/api/v1/filmes.
 </td>
 </tr>
 </table>
 
 ## Iniciar a aplicação
-Para iniciar a aplicação, basta executar o comando: mvn clean package payara-micro:start;
+Para iniciar a aplicação, basta executar o comando: ***mvn clean package payara-micro:start***
 
 Observação importante: como optei por utilizar o banco de dados sqlite3 e não subi o mesmo em um docker, é preciso realizar um ajuste na classe: *PersistenceService* alterando a URL do *datasource* adicionando o arquivo todo.db de acordo com o local que você baixou.
 ## Sonar

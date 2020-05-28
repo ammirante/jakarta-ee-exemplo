@@ -2,11 +2,8 @@ package com.github.ammirante.servico;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.Arrays;
 
 import javax.inject.Inject;
 
@@ -20,8 +17,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.github.ammirante.entidade.Filme;
-import com.github.ammirante.entidade.Genero;
-import com.github.ammirante.entidade.Idioma;
 
 /**
  * FilmeServicoTest
@@ -35,12 +30,6 @@ public class FilmeServicoTest {
 
     @Inject
     private Filme filme;
-
-    @Inject
-    private Genero genero;
-    
-    @Inject
-    private Idioma idioma;
 
     /**
      * @return
@@ -60,19 +49,13 @@ public class FilmeServicoTest {
     @Before
     public void setUp() throws Exception {
     	filme.setAdulto(Boolean.TRUE);
-    	filme.setDescricao("Um jovem programador � atormentado por estranhos pesadelos nos quais sempre est� conectado por cabos a um imenso sistema de computadores do futuro...");
+    	filme.setDescricao("Um jovem programador é atormentado por estranhos pesadelos nos quais sempre est� conectado por cabos a um imenso sistema de computadores do futuro...");
     	filme.setCustoProducao(new BigDecimal("312521.321"));
     	filme.setReceita(new BigDecimal("23521312"));
     	filme.setTempoDuracao(120);
     	filme.setTitulo("Matrix");
-    	filme.setDataLancamento(LocalDate.now());
-    	
-    	genero.setNome("Drama");
-    	idioma.setIdioma("Ingl�s");
-    	
-    	filme.setIdiomas(Arrays.asList(idioma));
-    	filme.setGeneros(Arrays.asList(genero));
     }
+
     
     /**
      * 
@@ -88,32 +71,46 @@ public class FilmeServicoTest {
     	assertNotNull(filme.getIdiomas());
     	assertNotNull(filme.getTitulo());
     	assertNotNull(filme.getDescricao());
-    	assertNotNull(filme.getDataLancamento());
     	assertNotNull(filme.getTempoDuracao());
     }
     
-//    /**
-//     * 
-//     */
-//    @Test
-//    public void recuperarFilmes() {
-//    	assertEquals(0, persistenceService.recuperarFilmes().size());
-//    	persistenceService.salvarFilme(filme);
-//    	assertEquals(1, persistenceService.recuperarFilmes().size());
-//    }
-//    
-//    /**
-//     * 
-//     */
-//    @Test
-//    public void atualizarFilme() {
-//    	// Salvando o primeiro filme.
-//    	persistenceService.salvarFilme(filme);
-//    	
-//    	filme.setDescricao("Alterando a descrição");
-//    	persistenceService.atualizarFilme(filme);
-//    	
-//    	assertEquals(filme.getDescricao(), persistenceService.recuperarFilme(1L).getDescricao());
-//    }
+    
+    /**
+     * 
+     */
+    @Test
+    public void atualizarFilme() {
+    	filme = persistenceService.recuperarFilme(1L);
+    	filme.setDescricao("Alterando a descrição");
+    	persistenceService.atualizarFilme(filme);
+    	
+    	assertEquals(filme.getDescricao(), persistenceService.recuperarFilme(1L).getDescricao());
+    }
+    
+    /**
+     * 
+     */
+    @Test
+    public void recuperarFilme() {
+    	assertEquals(filme.getCustoProducao(), persistenceService.recuperarFilme(1L).getCustoProducao());
+    }
+    
+    /**
+     * 
+     */
+    @Test
+    public void recuperarFilmes() {
+    	assertEquals(1, persistenceService.recuperarFilmes().size());
+    }
+    
+    /**
+     * 
+     */
+    @Test
+    public void deletarFilme() {
+    	persistenceService.deletarFilme(1L);
+    	
+    	assertEquals(0, persistenceService.recuperarFilmes().size());
+    }
 }
 

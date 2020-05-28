@@ -5,6 +5,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -45,7 +46,7 @@ public class Filmes {
  	public Response getFilme(@PathParam("id") Long id) {
 		Filme filme = persistenceService.recuperarFilme(id);
 		if(filme == null) {
-			return Response.status(Response.Status.NOT_FOUND).entity("Id informado não encontrado.").build();
+			return Response.status(Response.Status.NOT_FOUND).entity("Filme não encontrado.").build();
 		}
 		return Response.ok(persistenceService.recuperarFilme(id)).build();
 	}
@@ -55,7 +56,6 @@ public class Filmes {
 	 */
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
 	public Response salvarFilme(Filme filme) {
 		try {
 			persistenceService.salvarFilme(filme);
@@ -73,7 +73,6 @@ public class Filmes {
 	@DELETE
 	@Path("{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
 	public Response deletarFilme(@PathParam("id") Long id) {
 		try {
 			persistenceService.deletarFilme(id);
@@ -87,7 +86,7 @@ public class Filmes {
 	 * @param filme
 	 * @return
 	 */
-	@POST
+	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response atualizarFilme(Filme filme) {
 		try {

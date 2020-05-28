@@ -1,10 +1,8 @@
 package com.github.ammirante.entidade;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.List;
 
-import javax.json.bind.annotation.JsonbDateFormat;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,53 +13,47 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.Positive;
 
 /**
  * Filme
  *
  */
-@Entity
+@Entity(name = "Filme")
 @Table(name = "filme")
 public class Filme {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="filme_sequence")
-	@SequenceGenerator(name="filme_sequence", sequenceName = "filme_sequence")
-	protected Long id;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "filme_sequence")
+	@SequenceGenerator(name = "filme_sequence", sequenceName = "filme_sequence")
+	private Long id;
 
 	@Column(nullable = false, updatable = false)
 	private Boolean adulto;
-	
-	@OneToMany(mappedBy = "filme", cascade = CascadeType.ALL)
-	@JoinColumn(name = "genero_id")
+
+	@OneToMany(mappedBy = "filme", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name = "filme_id")
 	private List<Genero> generos;
-	
+
 	@Column(nullable = false, precision = 15, scale = 2, updatable = true)
-	@Positive(message = "O custo de produção deve ser maior que 0.")
+	@Positive(message = "O custo de produÃ§Ã£o deve ser maior que 0.")
 	private BigDecimal custoProducao;
-	
-	@OneToMany(mappedBy = "filme", cascade = CascadeType.ALL)
-	@JoinColumn(name = "idioma_id")
+
+	@OneToMany(mappedBy = "filme", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name = "filme_id")
 	private List<Idioma> idiomas;
-	
+
 	@Column(nullable = false, length = 30, updatable = false)
 	private String titulo;
-	
+
 	@Column(nullable = false, updatable = true)
 	private String descricao;
-	
-	@Column(nullable = false, updatable = false)
-	@FutureOrPresent(message = "A data de lançamento não pode ser anterior a data atual.")
-	@JsonbDateFormat(value = "dd-MM-yyyy")
-	private LocalDate dataLancamento;
-	
+
 	@Column(nullable = true, updatable = true, precision = 15, scale = 2)
 	private BigDecimal receita;
-	
+
 	@Column(nullable = false, updatable = false)
-	@Positive(message = "A duração do filme deve ser maior que 0.")
+	@Positive(message = "A duraÃ§Ã£o do filme deve ser maior que 0.")
 	private Integer tempoDuracao;
 
 	/**
@@ -163,20 +155,6 @@ public class Filme {
 	}
 
 	/**
-	 * @return the dataLancamento
-	 */
-	public LocalDate getDataLancamento() {
-		return dataLancamento;
-	}
-
-	/**
-	 * @param dataLancamento the dataLancamento to set
-	 */
-	public void setDataLancamento(LocalDate dataLancamento) {
-		this.dataLancamento = dataLancamento;
-	}
-
-	/**
 	 * @return the receita
 	 */
 	public BigDecimal getReceita() {
@@ -210,7 +188,7 @@ public class Filme {
 	@Override
 	public String toString() {
 		return "Filme [id=" + id + ", adulto=" + adulto + ", generos=" + generos + ", custoProducao=" + custoProducao
-				+ ", idiomas=" + idiomas + ", titulo=" + titulo + ", descricao=" + descricao + ", dataLancamento="
-				+ dataLancamento + ", receita=" + receita + ", tempoDuracao=" + tempoDuracao + "]";
+				+ ", idiomas=" + idiomas + ", titulo=" + titulo + ", descricao=" + descricao + ", receita=" + receita
+				+ ", tempoDuracao=" + tempoDuracao + "]";
 	}
 }
