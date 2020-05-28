@@ -18,7 +18,7 @@ local.properties
 .settings
 
 #ideia
-.ideia
+.idea/
 
 # Locally stored "Eclipse launch configurations"
 *.launch
@@ -205,3 +205,4 @@ buildNumber.properties
 *tmpfile
 *tmpfiles
 *lol
+*ideia
